@@ -1,13 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:to_do_app/login/authPage.dart';
+import 'package:to_do_app/login/main_page.dart';
 
 
 
 
-import 'login/login_screen.dart';
-import 'screens/home.dart';
+
+
 
 
 void main() async{
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'To Do App',
-      home:AuthPage(),
+      home:MainPage(),
     );
   }
 }

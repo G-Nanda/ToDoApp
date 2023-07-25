@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_app/Constants/colors.dart';
 import 'package:to_do_app/login/authPage.dart';
@@ -155,12 +156,17 @@ class _HomeState extends State<Home>{
     
   void _addToDoItem(String toDo)
   {
-    setState(() {
+    if(toDo!='') 
+    {
+      setState(() {
       todosList.add(ToDo(
           id: DateTime.now().millisecondsSinceEpoch.toString(),
           todoText: toDo,
       ));
     });
+      
+    }
+    
       
     
       
@@ -230,13 +236,17 @@ class _HomeState extends State<Home>{
                   ),
                   Padding(padding:EdgeInsets.only(left: 10.0),
                   child: GestureDetector(
+
                     onTap: (){
-                          Navigator.push(context,
-                          MaterialPageRoute(builder: (context){
-                            return AuthPage();
-                          },
-                           ),
-                          );
+                      showDialog(
+      context: context, 
+      builder: (context){
+        return Center(child: CircularProgressIndicator());
+      }
+      );
+                      FirebaseAuth.instance.signOut();
+
+                         
                         },
                     child: Text('Log Out')),
                   ),
